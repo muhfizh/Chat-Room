@@ -21,6 +21,6 @@ server.listen(port, function () {
 io.on('connection', function (socket) {
     socket.emit('message', {message: 'Selamat Datang di Room Chat'});
     socket.on('send', function (data) {
-        socket.emit('message', data);
+        io.emit('message', data);
     });
 });
