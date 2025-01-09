@@ -2,13 +2,14 @@ doctype html
 html
 head
 title= "Real time web chat"
-script(src='/public/chat.js')
+script(src='/chat.js')
 script(src='/socket.io/socket.io.js')
 body
 #content(style='width: 500px; height: 300px; margin: 0 0 20px 0; border: solid 1px #999; overflow-y: scroll;')
 .controls
 | Name:
 input#name(style='width:350px;')
+input#favcolor(style='width:21px;height:21px;',type='color',value='#ff0000')
 br
 | Message :
 input#field(style='width:350px;')

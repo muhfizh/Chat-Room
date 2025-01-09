@@ -1,19 +1,21 @@
 window.onload = function() {
 
     var message = [];
-    var socket = io.connect('https://localhost:2424');
+    var socket = io.connect('http://localhost:2424');
     var field = document.getElementById("field");
     var sendButton = document.getElementById("send");
     var content = document.getElementById("content");
     var name = document.getElementById("name");
+    var color = document.getElementById("favcolor");
 
     socket.on('message', function (data) {
         if(data.message) {
-            messages.push(data);
+            message.push(data);
+            console.log(message);
             var html = '';
-            for(var i=0; i<messages.length; i++){
-                html += '<b>' + (messages[i].username ? messages[i].username : 'Server') + ': </b>';
-                html += messages[i].message + '<br />';
+            for(var i=0; i<message.length; i++){
+                html += '<b style="color:'+ (message[i].color) +'">' + (message[i].username ? message[i].username : 'Server') + ': </b>';
+                html += message[i].message + '<br />';
             }
             content.innerHTML = html;
             content.scrollTop = content.scrollHeight;
@@ -27,7 +29,7 @@ window.onload = function() {
             alert("Tolong isi nama anda!");
         } else {
             var text = field.value;
-            socket.emit('send', {message: text, username: name.value});
+            socket.emit('send', {message: text, username: name.value, color: color.value});
             field.value = '';
         }
     };
