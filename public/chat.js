@@ -1,7 +1,7 @@
 window.onload = function() {
 
     var message = [];
-    var socket = io.connect('http://192.168.5.215:2424');
+    var socket = io.connect('http://localhost:2424');
     var field = document.getElementById("field");
     var sendButton = document.getElementById("send");
     var video = document.getElementById("video");
