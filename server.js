@@ -26,7 +26,7 @@ app.get('/', function(req, res){
 //     res.send(uuidv4());
 // });
 
-app.get('/:room' , (req,res)=>{
+app.get('/:room/:name' , (req,res)=>{
     res.render('video' , {RoomId:req.params.room});
 });
 
@@ -42,8 +42,8 @@ io.on('connection', function (socket) {
     socket.on('newUser' , (id , room)=>{
         socket.join(room);
         socket.to(room).broadcast.emit('userJoined' , id);
-        socket.on('disconnect' , ()=>{
-        socket.to(room).broadcast.emit('userDisconnect' , id);
-            });
+        // socket.on('disconnect' , ()=>{
+        // socket.to(room).broadcast.emit('userDisconnect' , id);
+        //     });
         });
 });

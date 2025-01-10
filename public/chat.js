@@ -39,7 +39,7 @@ window.onload = function() {
         if(name.value == "") {
             alert("Tolong isi nama anda!");
         } else {
-            window.open('/video');
+            window.open('/video/' + name.value);
         }
     };
 
